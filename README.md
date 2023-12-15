@@ -36,3 +36,9 @@ npm run build
 You can preview the production build with `npm run preview`.
 
 > To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+
+## Updating the database
+
+> Create, udpdate, and delete tables in the schema.ts file
+> Generate migration usine `npm run generate`
+> Migrate the new changes using `npm run migrate`
