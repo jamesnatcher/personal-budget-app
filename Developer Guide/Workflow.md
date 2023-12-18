@@ -11,3 +11,5 @@ The workflow will be outlined below and has an assumption that a developer has b
     2. Checkout back into your branch and rebase using the command `git rebase -i origin/main`
     3. Push your branch to Github using the command `git push origin <YOUR BRANCH NAME`
 4. Let a team lead or a review know it is ready to go!
+
+Let us do a good job!
