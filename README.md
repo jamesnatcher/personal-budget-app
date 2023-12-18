@@ -15,15 +15,27 @@ npm run dev -- --open
 
 ## Updating the database
 
-> Create, udpdate, and delete tables in the schema.ts file.
-> Generate migration using `npm run generate`
-> Migrate the new changes using `npm run migrate`
+When you create, udpdate, and delete tables in the schema.ts file run the following commands to update the database:
+
+```bash
+# prepares and creates the migration scripts
+npm run generate
+
+# pushes the changes to the database on Supabase
+npm run migrate
+```
 
 ## Checking linting
 
 > Always check linting after making updates in order to make sure the files are all uniformally formatted.
-> Look at potential issues using `npm run lint`
-> Fix potential issues using `npm run format`
+
+```bash
+# checks for incorrect formatting
+npm run lint
+
+# formats the page to comply to Prettier standards
+npm run format
+```
 
 ## Building
 
