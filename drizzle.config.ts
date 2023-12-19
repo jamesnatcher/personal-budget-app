@@ -2,9 +2,9 @@
 import type { Config } from 'drizzle-kit';
 import * as dotenv from 'dotenv';
 dotenv.config();
-const { DATABASE_URL } = process.env;
+const { CONNECTION_STRING } = process.env;
 
-if (!DATABASE_URL) {
+if (!CONNECTION_STRING) {
 	throw new Error('No url');
 }
 
@@ -13,6 +13,6 @@ export default {
 	out: './migrations',
 	driver: 'pg',
 	dbCredentials: {
-		connectionString: DATABASE_URL
+		connectionString: CONNECTION_STRING
 	}
 } satisfies Config;
