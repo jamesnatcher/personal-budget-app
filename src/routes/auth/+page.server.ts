@@ -15,24 +15,28 @@ export const load = (async ({ locals }) => {
 
 export const actions = {
 	discordAuth: async ({ locals }) => {
+		console.log(callBackRootURL);
 		const { data, error } = await locals.supabase.auth.signInWithOAuth({
 			provider: 'discord',
 			options: {
 				redirectTo: `${callBackRootURL}/auth/callback`
 			}
 		});
+		console.log(data.url);
 		if (error) {
 			throw redirect(307, '/');
 		}
 		throw redirect(302, data.url);
 	},
 	githubAuth: async ({ locals }) => {
+		console.log(callBackRootURL);
 		const { data, error } = await locals.supabase.auth.signInWithOAuth({
 			provider: 'github',
 			options: {
 				redirectTo: `${callBackRootURL}/auth/callback`
 			}
 		});
+		console.log(data.url);
 		if (error) {
 			throw redirect(307, '/');
 		}
