@@ -1,5 +1,9 @@
 import type { Actions, PageServerLoad } from '../$types';
 import { redirect } from '@sveltejs/kit';
+import { DEV_ROOT_URL, PROD_ROOT_URL } from '$env/static/private';
+
+const { MODE } = import.meta.env;
+const callBackRootURL = MODE === 'development' ? DEV_ROOT_URL : PROD_ROOT_URL;
 
 export const load = (async ({ locals }) => {
 	const session = await locals.getSession();
@@ -14,7 +18,7 @@ export const actions = {
 		const { data, error } = await locals.supabase.auth.signInWithOAuth({
 			provider: 'discord',
 			options: {
-				redirectTo: `http://localhost:5173/auth/callback`
+				redirectTo: `${callBackRootURL}/auth/callback`
 			}
 		});
 		if (error) {
@@ -26,7 +30,7 @@ export const actions = {
 		const { data, error } = await locals.supabase.auth.signInWithOAuth({
 			provider: 'github',
 			options: {
-				redirectTo: `http://localhost:5173/auth/callback`
+				redirectTo: `${callBackRootURL}/auth/callback`
 			}
 		});
 		if (error) {
