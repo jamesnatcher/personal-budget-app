@@ -7,7 +7,7 @@
 
 <div class="navbar bg-primary">
 	<div class="flex-1">
-		<a href="/" class="btn btn-primary text-xl">Be Smart With Money</a>
+		<a href="/" class="btn btn-primary text-xl">Be Smart With Money {data.url.origin}</a>
 	</div>
 	{#if session}
 		<div class="flex-none">
