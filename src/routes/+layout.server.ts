@@ -7,6 +7,6 @@ export const load = (async ({ locals, route, url }) => {
 	if (!session && route.id !== '/auth' && route.id !== '/') {
 		throw redirect(307, '/auth');
 	}
-
-	return { session, url };
+	const origin = url.origin;
+	return { session, origin };
 }) satisfies LayoutServerLoad;
