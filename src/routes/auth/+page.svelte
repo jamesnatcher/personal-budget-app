@@ -4,10 +4,6 @@
 
 <h1 class="text-4xl">Sign In/Sign up</h1>
 
-<form method="post" action="/auth?/discordAuth">
-	<button type="submit">Register</button>
-</form>
-
 <div class="flex items-center justify-center min-h-screen bg-gray-100">
 	<form method="post" action="/auth?/discordAuth">
 		<button
