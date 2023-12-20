@@ -2,7 +2,18 @@
 export default {
 	content: ['./src/**/*.{html,js,svelte,ts}'],
 	theme: {
-		extend: {}
+		extend: {
+			colors: {
+				'dark-purple': '#1F2041',
+				purple: '#4B3F72',
+				viridian: '#417B5A',
+				bone: '#D0CEBA',
+				pink: '#1F2041'
+			}
+		}
 	},
-	plugins: []
+	plugins: [require('daisyui')],
+	daisyui: {
+		themes: ['emerald', 'dracula', 'cyberpunk']
+	}
 };
