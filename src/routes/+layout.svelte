@@ -66,8 +66,8 @@
 					</li>
 					<li><a href="/settings">Settings</a></li>
 					<li>
-						<form method="post" action="/auth?/signOut">
-							<button type="submit">Sign Out</button>
+						<form method="post" action="/auth?/signOut" class="flex flex-row">
+							<button type="submit" class="flex-1 text-start">Sign Out</button>
 						</form>
 					</li>
 				</ul>
