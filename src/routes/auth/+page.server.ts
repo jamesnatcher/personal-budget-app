@@ -3,7 +3,7 @@ import { redirect } from '@sveltejs/kit';
 
 export const load = (async ({ locals }) => {
 	const session = await locals.getSession();
-	
+
 	if (session !== null) {
 		throw redirect(302, '/home');
 	}
