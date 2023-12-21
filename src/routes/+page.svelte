@@ -1,9 +1,3 @@
-<script lang="ts">
-	export let data;
-
-	const users = data.users;
-</script>
-
 <div
 	class="hero min-h-screen"
 	style="background-image: url(https://daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.jpg);"

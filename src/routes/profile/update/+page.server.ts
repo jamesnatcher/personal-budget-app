@@ -27,7 +27,8 @@ export const load = (async (event) => {
 			nickName: userProfile.nickName,
 			phoneNumber: userProfile.phone
 		})
-		.from(userProfile).where(eq(userProfile.id, user.id));
+		.from(userProfile)
+		.where(eq(userProfile.id, user.id));
 
 	const { firstName, lastName, nickName, phoneNumber } = result[0];
 

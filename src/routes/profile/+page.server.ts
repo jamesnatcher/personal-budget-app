@@ -6,20 +6,21 @@ import { eq } from 'drizzle-orm';
 export const load = (async ({ locals }) => {
 	const { user } = await locals.getSession();
 
-    const result = await db
+	const result = await db
 		.select({
-            firstName: userProfile.firstName,
-            nickName: userProfile.nickName,
-            lastName: userProfile.lastName,
-            phoneNumber: userProfile.phone,
-            role: databaseRole.role,
-        })
-		.from(userProfile).leftJoin(databaseRole, eq(userProfile.roleId, databaseRole.id)).where(eq(userProfile.id, user.id));
+			firstName: userProfile.firstName,
+			nickName: userProfile.nickName,
+			lastName: userProfile.lastName,
+			phoneNumber: userProfile.phone,
+			role: databaseRole.role
+		})
+		.from(userProfile)
+		.leftJoin(databaseRole, eq(userProfile.roleId, databaseRole.id))
+		.where(eq(userProfile.id, user.id));
 
+	const profile = result[0];
 
-    const profile = result[0]
-
-    return { profile }
+	return { profile };
 }) satisfies PageServerLoad;
 
 export const actions = {} satisfies Actions;

@@ -80,7 +80,7 @@
 	<div>
 		<slot />
 	</div>
-	
+
 	<div class="footer mt-auto p-10 bg-neutral text-neutral-content">
 		<aside>
 			<svg
