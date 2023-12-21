@@ -1,4 +1,4 @@
-import { pgTable, serial, text, varchar, timestamp, integer } from 'drizzle-orm/pg-core';
+import { pgTable, serial, text, varchar, timestamp, integer, uuid } from 'drizzle-orm/pg-core';
 
 export const databaseRole = pgTable('database_role', {
 	id: serial('role_id').primaryKey(),
@@ -7,9 +7,12 @@ export const databaseRole = pgTable('database_role', {
 	updatedAt: timestamp('updated_at')
 });
 
-export const user = pgTable('user', {
-	id: serial('user_id').primaryKey(),
+export type DatabasRole = typeof databaseRole.$inferSelect;
+
+export const userProfile = pgTable('user_profile', {
+	id: uuid('user_id').primaryKey(),
 	firstName: text('first_name'),
+	nickName: text('nick_name'),
 	lastName: text('last_name'),
 	phone: varchar('phone', { length: 256 }),
 	email: text('email'),
@@ -19,16 +22,20 @@ export const user = pgTable('user', {
 	updatedAt: timestamp('updated_at')
 });
 
+export type UserProfile = typeof userProfile.$inferSelect;
+
 export const expense = pgTable('expense', {
 	id: serial('expense_id').primaryKey(),
 	title: text('title'),
-	userId: integer('user_id')
-		.references(() => user.id)
+	userId: uuid('user_id')
+		.references(() => userProfile.id)
 		.notNull(),
 	expense: integer('expense').notNull(),
 	createdAt: timestamp('created_at'),
 	updatedAt: timestamp('updated_at')
 });
+
+export type Expense = typeof expense.$inferSelect;
 
 export const expenseTag = pgTable('expense_tag', {
 	id: serial('expense_tag_id').primaryKey(),
@@ -37,3 +44,5 @@ export const expenseTag = pgTable('expense_tag', {
 	createdAt: timestamp('created_at'),
 	updatedAt: timestamp('updated_at')
 });
+
+export type ExpenseTag = typeof expenseTag.$inferSelect;

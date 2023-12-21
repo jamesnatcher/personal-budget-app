@@ -1,15 +1,15 @@
 {
-	"id": "282c9d1c-02a5-4cf7-a26a-437cf8b469d9",
-	"prevId": "3329483c-74fa-4fdf-bf83-48f98d740113",
+	"id": "e9b18f2a-2fed-4cb8-824d-6c388ae4e31b",
+	"prevId": "9f66425c-4c14-4fe6-a607-b5223d3caf5c",
 	"version": "5",
 	"dialect": "pg",
 	"tables": {
-		"database_roles": {
-			"name": "database_roles",
+		"database_role": {
+			"name": "database_role",
 			"schema": "",
 			"columns": {
-				"id": {
-					"name": "id",
+				"role_id": {
+					"name": "role_id",
 					"type": "serial",
 					"primaryKey": true,
 					"notNull": true
@@ -38,13 +38,13 @@
 			"compositePrimaryKeys": {},
 			"uniqueConstraints": {}
 		},
-		"users": {
-			"name": "users",
+		"user": {
+			"name": "user",
 			"schema": "",
 			"columns": {
-				"id": {
-					"name": "id",
-					"type": "serial",
+				"user_id": {
+					"name": "user_id",
+					"type": "uuid",
 					"primaryKey": true,
 					"notNull": true
 				},
@@ -99,12 +99,12 @@
 			},
 			"indexes": {},
 			"foreignKeys": {
-				"users_role_id_database_roles_id_fk": {
-					"name": "users_role_id_database_roles_id_fk",
-					"tableFrom": "users",
-					"tableTo": "database_roles",
+				"user_role_id_database_role_role_id_fk": {
+					"name": "user_role_id_database_role_role_id_fk",
+					"tableFrom": "user",
+					"tableTo": "database_role",
 					"columnsFrom": ["role_id"],
-					"columnsTo": ["id"],
+					"columnsTo": ["role_id"],
 					"onDelete": "no action",
 					"onUpdate": "no action"
 				}
@@ -118,8 +118,6 @@
 	"_meta": {
 		"schemas": {},
 		"tables": {},
-		"columns": {
-			"\"users\".\"user_id\"": "\"users\".\"role_id\""
-		}
+		"columns": {}
 	}
 }

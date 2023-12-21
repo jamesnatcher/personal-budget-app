@@ -5,3 +5,9 @@ describe('sum test', () => {
 		expect(1 + 2).toBe(3);
 	});
 });
+
+describe('validator test', () => {
+	it('checks that updateUserProfileSchema cakudates correctly', () => {
+		expect(1 + 2).toBe(3);
+	});
+});
