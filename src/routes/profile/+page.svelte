@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { PageServerData } from './$types';
+	import Icon from '@iconify/svelte';
 
 	export let data: PageServerData;
 
@@ -32,7 +33,8 @@
 					<li class="flex items-center py-3">
 						<span>Status</span>
 						<span class="ml-auto"
-							><span class="bg-green-500 py-1 px-2 rounded text-white text-sm">Active</span></span
+							><span class="bg-green-500 py-1 px-2 rounded text-white text-sm">Within Budget</span
+							></span
 						>
 					</li>
 					<li class="flex items-center py-3">
@@ -90,24 +92,29 @@
 			<!-- Profile tab -->
 			<!-- About Section -->
 			<div class="card bg-white p-3 shadow-sm">
-				<div class="flex items-center space-x-2 font-semibold text-gray-900 leading-8">
-					<span class="text-secondary">
-						<svg
-							class="h-5"
-							xmlns="http://www.w3.org/2000/svg"
-							fill="none"
-							viewBox="0 0 24 24"
-							stroke="currentColor"
-						>
-							<path
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								stroke-width="2"
-								d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-							/>
-						</svg>
-					</span>
-					<span class="tracking-wide">About</span>
+				<div class="flex items-center justify-between font-semibold text-gray-900 leading-8">
+					<div class="flex items-center space-x-2">
+						<span class="text-secondary">
+							<svg
+								class="h-5"
+								xmlns="http://www.w3.org/2000/svg"
+								fill="none"
+								viewBox="0 0 24 24"
+								stroke="currentColor"
+							>
+								<path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									stroke-width="2"
+									d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+								/>
+							</svg>
+						</span>
+						<span class="tracking-wide">About</span>
+					</div>
+					<a href="/profile/update">
+						<Icon icon="octicon:gear-16" class="text-secondary hover:text-accent" />
+					</a>
 				</div>
 				<div class="text-gray-700">
 					<div class="grid md:grid-cols-2 text-sm">
@@ -136,7 +143,7 @@
 							<div class="px-4 py-2">Arlington Heights, IL, Illinois</div>
 						</div>
 						<div class="grid grid-cols-2">
-							<div class="px-4 py-2 font-semibold">Email.</div>
+							<div class="px-4 py-2 font-semibold">Email</div>
 							<div class="px-4 py-2">
 								<a class="text-blue-800" href="mailto:jane@example.com">jane@example.com</a>
 							</div>
