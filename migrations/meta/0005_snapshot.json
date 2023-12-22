@@ -1,0 +1,350 @@
+{
+	"id": "5eef43c5-3150-4532-b846-1a1886c5f017",
+	"prevId": "a6114c93-5d7b-42d8-bd15-5b963c55cd80",
+	"version": "5",
+	"dialect": "pg",
+	"tables": {
+		"budget_status": {
+			"name": "budget_status",
+			"schema": "",
+			"columns": {
+				"budget_status_id": {
+					"name": "budget_status_id",
+					"type": "serial",
+					"primaryKey": true,
+					"notNull": true
+				},
+				"title": {
+					"name": "title",
+					"type": "text",
+					"primaryKey": false,
+					"notNull": false
+				},
+				"user_budget_status_id": {
+					"name": "user_budget_status_id",
+					"type": "integer",
+					"primaryKey": false,
+					"notNull": true
+				},
+				"sort_order": {
+					"name": "sort_order",
+					"type": "integer",
+					"primaryKey": false,
+					"notNull": false
+				},
+				"created_at": {
+					"name": "created_at",
+					"type": "timestamp",
+					"primaryKey": false,
+					"notNull": false
+				},
+				"updated_at": {
+					"name": "updated_at",
+					"type": "timestamp",
+					"primaryKey": false,
+					"notNull": false
+				}
+			},
+			"indexes": {},
+			"foreignKeys": {
+				"budget_status_user_budget_status_id_user_budget_status_user_budget_status_id_fk": {
+					"name": "budget_status_user_budget_status_id_user_budget_status_user_budget_status_id_fk",
+					"tableFrom": "budget_status",
+					"tableTo": "user_budget_status",
+					"columnsFrom": ["user_budget_status_id"],
+					"columnsTo": ["user_budget_status_id"],
+					"onDelete": "no action",
+					"onUpdate": "no action"
+				}
+			},
+			"compositePrimaryKeys": {},
+			"uniqueConstraints": {}
+		},
+		"database_role": {
+			"name": "database_role",
+			"schema": "",
+			"columns": {
+				"role_id": {
+					"name": "role_id",
+					"type": "serial",
+					"primaryKey": true,
+					"notNull": true
+				},
+				"role": {
+					"name": "role",
+					"type": "text",
+					"primaryKey": false,
+					"notNull": false
+				},
+				"created_at": {
+					"name": "created_at",
+					"type": "timestamp",
+					"primaryKey": false,
+					"notNull": false
+				},
+				"updated_at": {
+					"name": "updated_at",
+					"type": "timestamp",
+					"primaryKey": false,
+					"notNull": false
+				}
+			},
+			"indexes": {},
+			"foreignKeys": {},
+			"compositePrimaryKeys": {},
+			"uniqueConstraints": {}
+		},
+		"expense": {
+			"name": "expense",
+			"schema": "",
+			"columns": {
+				"expense_id": {
+					"name": "expense_id",
+					"type": "serial",
+					"primaryKey": true,
+					"notNull": true
+				},
+				"title": {
+					"name": "title",
+					"type": "text",
+					"primaryKey": false,
+					"notNull": false
+				},
+				"user_id": {
+					"name": "user_id",
+					"type": "uuid",
+					"primaryKey": false,
+					"notNull": true
+				},
+				"expense": {
+					"name": "expense",
+					"type": "integer",
+					"primaryKey": false,
+					"notNull": true
+				},
+				"created_at": {
+					"name": "created_at",
+					"type": "timestamp",
+					"primaryKey": false,
+					"notNull": false
+				},
+				"updated_at": {
+					"name": "updated_at",
+					"type": "timestamp",
+					"primaryKey": false,
+					"notNull": false
+				}
+			},
+			"indexes": {},
+			"foreignKeys": {
+				"expense_user_id_user_profile_user_id_fk": {
+					"name": "expense_user_id_user_profile_user_id_fk",
+					"tableFrom": "expense",
+					"tableTo": "user_profile",
+					"columnsFrom": ["user_id"],
+					"columnsTo": ["user_id"],
+					"onDelete": "no action",
+					"onUpdate": "no action"
+				}
+			},
+			"compositePrimaryKeys": {},
+			"uniqueConstraints": {}
+		},
+		"expense_tag": {
+			"name": "expense_tag",
+			"schema": "",
+			"columns": {
+				"expense_tag_id": {
+					"name": "expense_tag_id",
+					"type": "serial",
+					"primaryKey": true,
+					"notNull": true
+				},
+				"title": {
+					"name": "title",
+					"type": "text",
+					"primaryKey": false,
+					"notNull": false
+				},
+				"expense_id": {
+					"name": "expense_id",
+					"type": "integer",
+					"primaryKey": false,
+					"notNull": false
+				},
+				"created_at": {
+					"name": "created_at",
+					"type": "timestamp",
+					"primaryKey": false,
+					"notNull": false
+				},
+				"updated_at": {
+					"name": "updated_at",
+					"type": "timestamp",
+					"primaryKey": false,
+					"notNull": false
+				}
+			},
+			"indexes": {},
+			"foreignKeys": {
+				"expense_tag_expense_id_expense_expense_id_fk": {
+					"name": "expense_tag_expense_id_expense_expense_id_fk",
+					"tableFrom": "expense_tag",
+					"tableTo": "expense",
+					"columnsFrom": ["expense_id"],
+					"columnsTo": ["expense_id"],
+					"onDelete": "no action",
+					"onUpdate": "no action"
+				}
+			},
+			"compositePrimaryKeys": {},
+			"uniqueConstraints": {}
+		},
+		"user_budget_status": {
+			"name": "user_budget_status",
+			"schema": "",
+			"columns": {
+				"user_budget_status_id": {
+					"name": "user_budget_status_id",
+					"type": "serial",
+					"primaryKey": true,
+					"notNull": true
+				},
+				"user_id": {
+					"name": "user_id",
+					"type": "uuid",
+					"primaryKey": false,
+					"notNull": true
+				},
+				"status_id": {
+					"name": "status_id",
+					"type": "integer",
+					"primaryKey": false,
+					"notNull": true
+				},
+				"created_at": {
+					"name": "created_at",
+					"type": "timestamp",
+					"primaryKey": false,
+					"notNull": false
+				},
+				"updated_at": {
+					"name": "updated_at",
+					"type": "timestamp",
+					"primaryKey": false,
+					"notNull": false
+				}
+			},
+			"indexes": {},
+			"foreignKeys": {
+				"user_budget_status_user_id_user_profile_user_id_fk": {
+					"name": "user_budget_status_user_id_user_profile_user_id_fk",
+					"tableFrom": "user_budget_status",
+					"tableTo": "user_profile",
+					"columnsFrom": ["user_id"],
+					"columnsTo": ["user_id"],
+					"onDelete": "no action",
+					"onUpdate": "no action"
+				},
+				"user_budget_status_status_id_budget_status_budget_status_id_fk": {
+					"name": "user_budget_status_status_id_budget_status_budget_status_id_fk",
+					"tableFrom": "user_budget_status",
+					"tableTo": "budget_status",
+					"columnsFrom": ["status_id"],
+					"columnsTo": ["budget_status_id"],
+					"onDelete": "no action",
+					"onUpdate": "no action"
+				}
+			},
+			"compositePrimaryKeys": {},
+			"uniqueConstraints": {}
+		},
+		"user_profile": {
+			"name": "user_profile",
+			"schema": "",
+			"columns": {
+				"user_id": {
+					"name": "user_id",
+					"type": "uuid",
+					"primaryKey": true,
+					"notNull": true
+				},
+				"first_name": {
+					"name": "first_name",
+					"type": "text",
+					"primaryKey": false,
+					"notNull": false
+				},
+				"nick_name": {
+					"name": "nick_name",
+					"type": "text",
+					"primaryKey": false,
+					"notNull": false
+				},
+				"last_name": {
+					"name": "last_name",
+					"type": "text",
+					"primaryKey": false,
+					"notNull": false
+				},
+				"phone": {
+					"name": "phone",
+					"type": "varchar(256)",
+					"primaryKey": false,
+					"notNull": false
+				},
+				"email": {
+					"name": "email",
+					"type": "text",
+					"primaryKey": false,
+					"notNull": false
+				},
+				"password": {
+					"name": "password",
+					"type": "text",
+					"primaryKey": false,
+					"notNull": false
+				},
+				"role_id": {
+					"name": "role_id",
+					"type": "integer",
+					"primaryKey": false,
+					"notNull": false
+				},
+				"created_at": {
+					"name": "created_at",
+					"type": "timestamp",
+					"primaryKey": false,
+					"notNull": false
+				},
+				"updated_at": {
+					"name": "updated_at",
+					"type": "timestamp",
+					"primaryKey": false,
+					"notNull": false
+				}
+			},
+			"indexes": {},
+			"foreignKeys": {
+				"user_profile_role_id_database_role_role_id_fk": {
+					"name": "user_profile_role_id_database_role_role_id_fk",
+					"tableFrom": "user_profile",
+					"tableTo": "database_role",
+					"columnsFrom": ["role_id"],
+					"columnsTo": ["role_id"],
+					"onDelete": "no action",
+					"onUpdate": "no action"
+				}
+			},
+			"compositePrimaryKeys": {},
+			"uniqueConstraints": {}
+		}
+	},
+	"enums": {},
+	"schemas": {},
+	"_meta": {
+		"schemas": {},
+		"tables": {},
+		"columns": {}
+	}
+}
