@@ -1,6 +1,6 @@
 {
-	"id": "9f66425c-4c14-4fe6-a607-b5223d3caf5c",
-	"prevId": "00000000-0000-0000-0000-000000000000",
+	"id": "a6114c93-5d7b-42d8-bd15-5b963c55cd80",
+	"prevId": "471f24ca-1783-4fe4-ad51-9afe2a36d0ab",
 	"version": "5",
 	"dialect": "pg",
 	"tables": {
@@ -81,10 +81,10 @@
 			},
 			"indexes": {},
 			"foreignKeys": {
-				"expense_user_id_user_user_id_fk": {
-					"name": "expense_user_id_user_user_id_fk",
+				"expense_user_id_user_profile_user_id_fk": {
+					"name": "expense_user_id_user_profile_user_id_fk",
 					"tableFrom": "expense",
-					"tableTo": "user",
+					"tableTo": "user_profile",
 					"columnsFrom": ["user_id"],
 					"columnsTo": ["user_id"],
 					"onDelete": "no action",
@@ -144,8 +144,8 @@
 			"compositePrimaryKeys": {},
 			"uniqueConstraints": {}
 		},
-		"user": {
-			"name": "user",
+		"user_profile": {
+			"name": "user_profile",
 			"schema": "",
 			"columns": {
 				"user_id": {
@@ -156,6 +156,12 @@
 				},
 				"first_name": {
 					"name": "first_name",
+					"type": "text",
+					"primaryKey": false,
+					"notNull": false
+				},
+				"nick_name": {
+					"name": "nick_name",
 					"type": "text",
 					"primaryKey": false,
 					"notNull": false
@@ -205,9 +211,9 @@
 			},
 			"indexes": {},
 			"foreignKeys": {
-				"user_role_id_database_role_role_id_fk": {
-					"name": "user_role_id_database_role_role_id_fk",
-					"tableFrom": "user",
+				"user_profile_role_id_database_role_role_id_fk": {
+					"name": "user_profile_role_id_database_role_role_id_fk",
+					"tableFrom": "user_profile",
 					"tableTo": "database_role",
 					"columnsFrom": ["role_id"],
 					"columnsTo": ["role_id"],
