@@ -7,9 +7,10 @@
 
 <div class="min-h-svh flex flex-col">
 	<div class="navbar bg-primary">
-		<div class="flex-1">
-			<a href="/" class="btn btn-primary text-xl">Be Smart With Money</a>
-		</div>
+		<a href="/" class="text-xl font-bold flex-1 space-x-4">
+			<img alt="The project logo" src="/images/money-favicon48.png" />
+			<span> Be Smart With Money</span>
+		</a>
 		{#if session}
 			<div class="flex-none">
 				<input class="input input-bordered input-sm join-item" placeholder="Search" />

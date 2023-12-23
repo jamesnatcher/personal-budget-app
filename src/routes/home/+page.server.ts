@@ -1,17 +1,28 @@
+import { databaseRole, userProfile } from '$lib/database/schema';
+import { eq } from 'drizzle-orm';
 import type { Actions, PageServerLoad } from '../$types';
 import { db } from '$lib/database/database.server';
-import { userProfile } from '$lib/database/schema';
-import { eq } from 'drizzle-orm';
-import { redirect } from '@sveltejs/kit';
 
-export const load = (async ({ locals }) => {
-	const session = await locals.getSession();
-	const currentUser = session.user;
-	const profile = await db.select().from(userProfile).where(eq(userProfile.id, currentUser.id));
+export const load = (async ({ locals, parent }) => {
+	await parent();
 
-	if (!profile || profile.length <= 0) {
-		throw redirect(307, '/profile/update');
-	}
+	const { user } = await locals.getSession();
+
+	const result = await db
+		.select({
+			firstName: userProfile.firstName,
+			nickName: userProfile.nickName,
+			lastName: userProfile.lastName,
+			phoneNumber: userProfile.phone,
+			role: databaseRole.role
+		})
+		.from(userProfile)
+		.leftJoin(databaseRole, eq(userProfile.roleId, databaseRole.id))
+		.where(eq(userProfile.id, user.id));
+
+	const profile = result[0];
+
+	return { profile };
 }) satisfies PageServerLoad;
 
 export const actions = {} satisfies Actions;

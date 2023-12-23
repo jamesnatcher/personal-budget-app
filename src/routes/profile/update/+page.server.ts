@@ -47,7 +47,6 @@ export const load = (async (event) => {
 export const actions = {
 	updateUserProfile: async (event) => {
 		const { user } = await event.locals.getSession();
-		console.log(user);
 		const updateUserProfileForm = await superValidate(event, updateUserProfileSchema);
 
 		if (!updateUserProfileForm.valid) {
@@ -56,7 +55,6 @@ export const actions = {
 			});
 		}
 		const validValues = updateUserProfileForm.data;
-		console.log(validValues);
 		await db
 			.update(userProfile)
 			.set({

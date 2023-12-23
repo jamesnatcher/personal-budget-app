@@ -1,0 +1,1 @@
+ALTER TABLE "budget_status" ADD COLUMN "code" text;
