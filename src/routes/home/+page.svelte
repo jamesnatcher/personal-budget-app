@@ -12,7 +12,7 @@
 		const queryKeyword = keyword ? keyword : 'finances';
 
 		const queryString = pageNumber
-			? `https://api.thenewsapi.com/v1/news/top?api_token=${PUBLIC_THE_NEWS_API_KEY}&search=${queryKeyword}&locale=us&limit=4`
+			? `https://api.thenewsapi.com/v1/news/top?api_token=${PUBLIC_THE_NEWS_API_KEY}&search=${queryKeyword}&locale=us&limit=4&page=${pageNumber}`
 			: `https://api.thenewsapi.com/v1/news/top?api_token=${PUBLIC_THE_NEWS_API_KEY}&search=${queryKeyword}&locale=us&limit=4`;
 
 		const response = await fetch(queryString);
@@ -253,7 +253,7 @@
 										if (pageNumber >= 100) {
 											pageNumber = 100;
 										}
-									}}>Next</button
+									}}>Next page</button
 								>
 							</div>
 						</div>
